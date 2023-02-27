@@ -4,6 +4,7 @@ const USE_MOCK = true;
 
 const URL = 'http://localhost:3000';
 const REGISTER_URL = `${URL}/users/register`;
+const LOGIN_URL = `${URL}/users/login`;
 
 const saveToken = (userToken) => {
     sessionStorage.setItem('token', JSON.stringify(userToken));
@@ -17,9 +18,32 @@ const getToken = () => {
 
 exports.login = async (email, password) => {
     // mock token
-    const token = uuidv4();
-    // set token in session
-    saveToken(token);
+    if (USE_MOCK) {
+        const token = uuidv4();
+        // set token in session
+        saveToken(token);
+        return;
+    }
+    
+    const response = await fetch(LOGIN_URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            email,
+            password
+        })
+    });
+    const data = await response.json();
+    // verify status code
+    if (response.status === 200) {
+        // set token in session
+        let token = data.data.token;
+        saveToken(token);
+        return;
+    }
+    throw new Error(data.data.message);
 }
 
 
@@ -31,7 +55,7 @@ exports.register = async (email, password, username) => {
         saveToken(token);
         return;
     }
-    
+
     const response = await fetch(REGISTER_URL, {
         method: 'POST',
         headers: {

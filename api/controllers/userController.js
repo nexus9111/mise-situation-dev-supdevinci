@@ -53,6 +53,43 @@ exports.register = async (req, res, next) => {
     }  
 };
 
+exports.login = async (req, res, next) => {
+    try {
+        const { email, password } = req.body;
+        
+        if (!email || !password) {
+            responseUtils.errorResponse(req, errors.errors.FORBIDDEN, "Missing data");
+        }
+
+        // check if user exists
+        let user = await User.findOne({email: email});
+        if (!user) {
+            // wait 300ms to prevent brute force
+            await new Promise((resolve) => setTimeout(resolve, 300));
+            responseUtils.errorResponse(req, errors.errors.FORBIDDEN, "Credentials are incorrect");
+        }
+
+        // check if password is correct
+        let passwordCorrect = await bcrypt.compare(password, user.password);
+        if (!passwordCorrect) {
+            responseUtils.errorResponse(req, errors.errors.FORBIDDEN, "Credentials are incorrect");
+        }
+
+        //generate token
+        let token = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: "1d" });
+
+        // return success
+        return responseUtils.successResponse(res, req, 200, {
+            message: "User logged in",
+            user: responseUtils.safeDatabaseData(user),
+            token: token,
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
+
 // exports.mainController = (req, res, next) => {
 //     try {
 //         return responseUtils.successResponse(res, req, 200, {
