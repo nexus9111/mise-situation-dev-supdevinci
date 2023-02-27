@@ -10,7 +10,15 @@ const getToken = () => {
     return userToken?.token
 }
 
-exports.authenticate = async (req, res) => {
+exports.login = async (email, password) => {
+    // mock token
+    const token = uuidv4();
+    // set token in session
+    saveToken(token);
+}
+
+
+exports.register = async (email, password, username) => {
     // mock token
     const token = uuidv4();
     // set token in session
