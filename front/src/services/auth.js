@@ -69,7 +69,7 @@ exports.register = async (email, password, username) => {
     });
     const data = await response.json();
     // verify status code
-    if (response.status === 200) {
+    if (response.status === 201) {
         // set token in session
         let token = data.data.token;
         saveToken(token);

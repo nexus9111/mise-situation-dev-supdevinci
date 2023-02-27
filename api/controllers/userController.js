@@ -43,7 +43,7 @@ exports.register = async (req, res, next) => {
         let token = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: "1d" });
 
         // return success
-        return responseUtils.successResponse(res, req, 200, {
+        return responseUtils.successResponse(res, req, 201, {
             message: "User created",
             user: responseUtils.safeDatabaseData(user),
             token: token,
