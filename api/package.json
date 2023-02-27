@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/nexus9111/nodejs_boilerplate_rest_api#readme",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "body-parser": "^1.20.1",
     "cors": "^2.8.5",
     "dotenv-safe": "^8.2.0",
@@ -29,6 +30,7 @@
     "express-ip": "^1.0.4",
     "express-rate-limit": "^6.7.0",
     "helmet": "^6.0.1",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.9.0",
     "nodemon": "^2.0.20",
     "uuid": "^9.0.0",

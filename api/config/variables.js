@@ -6,5 +6,6 @@ module.exports = {
     MONGOOSE_URI: process.env.MONGODB_URI,
     USE_DATABASE: process.env.USE_DATABASE === "1" ? true : false,
     BLACKLIST: ["178.20.55.18"],
-    SERVICE_NAME: process.env.SERVICE_NAME
+    SERVICE_NAME: process.env.SERVICE_NAME,
+    JWT_SECRET: process.env.JWT_SECRET,
 } ;
