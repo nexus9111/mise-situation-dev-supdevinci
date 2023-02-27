@@ -37,7 +37,7 @@ exports.login = async (email, password) => {
     });
     const data = await response.json();
     // verify status code
-    if (response.status === 200) {
+    if (data.data.success) {
         // set token in session
         let token = data.data.token;
         saveToken(token);
@@ -69,7 +69,7 @@ exports.register = async (email, password, username) => {
     });
     const data = await response.json();
     // verify status code
-    if (response.status === 201) {
+    if (data.data.success) {
         // set token in session
         let token = data.data.token;
         saveToken(token);
