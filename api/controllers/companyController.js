@@ -161,7 +161,7 @@ exports.comment = async (req, res, next) => {
         }
 
         const newComment = new Comment({
-            anonymous: true,
+            anonymous: anonymous,
             authorId: req.connectedUser.id,
             author: anonymous ? "Anonyme" : req.connectedUser.username,
             comment: comment,
