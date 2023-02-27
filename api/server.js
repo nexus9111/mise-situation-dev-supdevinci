@@ -42,6 +42,7 @@ app.get("/", (req, res) => {
 
 const routes = [
     { "path": "/users", "router": require("./router/userRouter") },
+    { "path": "/companies", "router": require("./router/companiesRouter") },
 ];
 
 for (const route of routes) {

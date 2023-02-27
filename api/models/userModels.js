@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 const { v4: uuidv4 } = require("uuid");
 
-const genders = ["h", "f"];
-
 const userSchema = new mongoose.Schema({
     id: {
         type: String,

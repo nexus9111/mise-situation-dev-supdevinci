@@ -31,4 +31,8 @@ exports.errors = {
         message: "Error provider auth",
         code: 500
     },
+    INTERNAL_SERVER_ERROR: {
+        message: "Internal server error",
+        code: 500
+    },
 };
