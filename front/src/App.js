@@ -1,35 +1,20 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// import Footer from './components/Footer';
-
 import HomePage from './pages/Home';
-// import Login from './pages/Login';
-// import Register from './pages/Register';
+import Login from './pages/LoginPage';
+import Register from './pages/RegisterPage';
 
 function App() {
-  // const [token, setToken] = useState();
-
-  // const token = getToken();
-
-  // if (!token) {
-  //   return (
-  //     <BrowserRouter>
-  //       <div className="content-layout">
-  //         <Routes> 
-  //           <Route path="/" element={<Login setToken={setToken} />} />
-  //           <Route path="/register" element={<Register />} />
-  //         </Routes>
-  //       </div>
-  //     </BrowserRouter>
-  //   );
-  // }
+  const [token, setToken] = useState();
 
   return (
     <BrowserRouter>
       <div className="content-layout">
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<Login setToken={setToken} />} />
+          <Route path="/register" element={<Register setToken={setToken}/>} />
         </Routes>
       </div>
     </BrowserRouter>
