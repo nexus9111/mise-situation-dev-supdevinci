@@ -229,6 +229,30 @@ const mockedSearchResults = {
 	}
 }
 
+const ACTIVITY_SECTIONS_ENUM = {
+    "A": "Agriculture, sylviculture et pêche",
+    "B": "Industries extractives",
+    "C": "Industries manufacturières",
+    "D": "Production et distribution d'électricité, de gaz, de vapeur et d'air conditionné",
+    "E": "Production et distribution d'eau ; assainissement, gestion des déchets et dépollution",
+    "F": "Construction",
+    "G": "Commerce ; réparation d'automobiles et de motocycles",
+    "H": "Transports et entreposage",
+    "I": "Hébergement et restauration",
+    "J": "Information et communication",
+    "K": "Activités financières et d'assurance",
+    "L": "Activités immobilières",
+    "M": "Activités spécialisées, scientifiques et techniques",
+    "N": "Activités de services administratifs et de soutien",
+    "O": "Administration publique et défense ; sécurité sociale obligatoire",
+    "P": "Enseignement",
+    "Q": "Activités de santé humaine et d'action sociale",
+    "R": "Activités artistiques, de loisirs et de spectacles",
+    "S": "Autres activités de services",
+    "T": "Activités des ménages en tant qu'employeurs ; activités indifférenciées des ménages en tant que producteurs de biens et services pour usage propre",
+    "U": "Activités des organisations et organismes extraterritoriaux",
+};
+
 const saveToken = (userToken) => {
     sessionStorage.setItem('token', JSON.stringify(userToken));
 }
@@ -237,6 +261,18 @@ const getToken = () => {
     const tokenString = sessionStorage.getItem('token');
     const userToken = JSON.parse(tokenString);
     return userToken?.token
+}
+
+const getActivitySections = () => {
+	// return ACTIVITY_SECTIONS_ENUM;
+	// convert it to array
+	let activitySections = Object.entries(ACTIVITY_SECTIONS_ENUM);
+	console.log(activitySections);
+	return activitySections;
+}
+
+const getActivitySection = (rawActivitySection) => {
+	return ACTIVITY_SECTIONS_ENUM[rawActivitySection];
 }
 
 const login = async (email, password) => {
@@ -340,8 +376,6 @@ const searchCompanies = async (queryString, postalCode, department, principalAct
     throw new Error(data.data.message);
 }
 
-
-
 // export setToken;
-const funcs = { getToken, login, register, searchCompanies }
+const funcs = { getToken, login, register, searchCompanies, getActivitySections, getActivitySection }
 export default funcs;
