@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // import Footer from './components/Footer';
@@ -8,6 +8,7 @@ import HomePage from './pages/Home';
 // import Register from './pages/Register';
 
 function App() {
+  // const [token, setToken] = useState();
 
   // const token = getToken();
 
@@ -16,7 +17,7 @@ function App() {
   //     <BrowserRouter>
   //       <div className="content-layout">
   //         <Routes> 
-  //           <Route path="/" element={<Login />} />
+  //           <Route path="/" element={<Login setToken={setToken} />} />
   //           <Route path="/register" element={<Register />} />
   //         </Routes>
   //       </div>

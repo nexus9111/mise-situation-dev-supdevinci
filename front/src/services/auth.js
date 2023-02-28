@@ -16,7 +16,7 @@ const getToken = () => {
     return userToken?.token
 }
 
-exports.login = async (email, password) => {
+const login = async (email, password) => {
     // mock token
     if (USE_MOCK) {
         const token = uuidv4();
@@ -47,7 +47,7 @@ exports.login = async (email, password) => {
 }
 
 
-exports.register = async (email, password, username) => {
+const register = async (email, password, username) => {
     // mock token
     if (USE_MOCK) {
         const token = uuidv4();
@@ -80,8 +80,5 @@ exports.register = async (email, password, username) => {
 
 
 // export setToken;
-
-module.exports = {
-    saveToken,
-    getToken
-}
+const funcs = { getToken, login, register }
+export default funcs;
