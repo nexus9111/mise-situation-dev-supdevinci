@@ -1,25 +1,39 @@
 import React from "react";
+import { useNavigate } from "react-router";
 import { Button, Checkbox, Form, Input, Col, Row } from "antd";
-// import authController from "../services/auth";
+import authController from "../services/auth";
 
 const LoginPages = ({ setToken }) => {
+  const navigate = useNavigate();
   
   const onFinish = async (value) => {
-    if (value.retypedPassword !== value.password) {
+    // if (value.retypedPassword !== value.password) {
+      if (!value.password) {
       alert("Password does not match");
       return;
     }
     // register
     try {
       // login
+        await authController.login(
+        value.email,
+        value.password
+      )
+
     } catch (error) {
       console.log(error);
       alert("Login failed");
       return;
     }
+    const token = sessionStorage.getItem("token")
+    setToken(token)
     // const token = sessionStorage.getItem("token");
     // setToken(token);
     console.log("Success:", value);
+    // redirect("/");
+    // return <redirect to ="/"/>
+    
+    navigate("/");
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -45,6 +59,8 @@ const LoginPages = ({ setToken }) => {
               {
                 required: true,
                 message: "please input your email!",
+                type: "email",
+                
               },
             ]}
           >

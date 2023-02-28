@@ -4,13 +4,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import Footer from './components/Footer';
 
 import HomePage from './pages/Home';
-// import Login from './pages/Login';
-// import Register from './pages/Register';
-
+import Login from './pages/LoginPage';
+import Register from './pages/RegisterPage';
+// import funcs from './services/auth';
 function App() {
-  // const [token, setToken] = useState();
+  const [token, setToken] = useState();
 
-  // const token = getToken();
+  // const token2 = funcs.getToken(); 
 
   // if (!token) {
   //   return (
@@ -18,7 +18,7 @@ function App() {
   //       <div className="content-layout">
   //         <Routes> 
   //           <Route path="/" element={<Login setToken={setToken} />} />
-  //           <Route path="/register" element={<Register />} />
+  //           <Route path="/register" element={<Register setToken={setToken} />} />
   //         </Routes>
   //       </div>
   //     </BrowserRouter>
@@ -30,6 +30,8 @@ function App() {
       <div className="content-layout">
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<Login setToken={setToken} />} />
+          <Route path="/register" element={<Register setToken={setToken}/>} />
         </Routes>
       </div>
     </BrowserRouter>
