@@ -1,4 +1,5 @@
 import { Button, Checkbox, Form, Input } from "antd";
+import Header from "../components/Header";
 
 const onFinish = (value) => {
   console.log("Success:", value);
@@ -10,6 +11,7 @@ const onFinishFailed = (errorInfo) => {
 const Home = () => {
   return (
     <>
+      <Header/>
       <h1>Home</h1>
       <Form
         name="basic"
