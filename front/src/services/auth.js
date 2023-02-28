@@ -340,8 +340,13 @@ const searchCompanies = async (queryString, postalCode, department, principalAct
     throw new Error(data.data.message);
 }
 
+const isLogin = () => {
+    const token = getToken();
+    return !!token;
+}
+
 
 
 // export setToken;
-const funcs = { getToken, login, register, searchCompanies }
+const funcs = { getToken, login, register, searchCompanies, isLogin }
 export default funcs;
