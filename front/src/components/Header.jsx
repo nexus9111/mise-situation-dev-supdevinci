@@ -23,7 +23,9 @@ const HeaderComponent = () => {
   }];
 
   return (
-    <Layout>
+    <Layout style={{
+      marginBottom: "6em"
+    }}>
       <Header
         style={{
           position: 'fixed',
@@ -32,7 +34,7 @@ const HeaderComponent = () => {
           zIndex: 1,
           width: '100%',
           background: "#1677FF",
-          boxShadow: "5px 8px 10px 5px rgba(208, 216, 243, 1)" 
+          boxShadow: "5px 8px 10px 5px rgba(208, 216, 243, 1)"
         }}
       >
 
