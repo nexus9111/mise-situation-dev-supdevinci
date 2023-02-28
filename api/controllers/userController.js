@@ -5,6 +5,7 @@ const { JWT_SECRET } = require("../config/variables");
 const errors = require("../config/errors");
 
 const User = require("../models/userModels");
+const Comment = require("../models/commentModels");
 
 const responseUtils = require("../utils/apiResponseUtils");
 
@@ -89,46 +90,21 @@ exports.login = async (req, res, next) => {
     }
 };
 
+exports.profile = async (req, res, next) => {
+    try {
+        // get user from database
+        let user = await User.findOne({id: req.connectedUser.id}).select("-__v -_id");
 
-// exports.mainController = (req, res, next) => {
-//     try {
-//         return responseUtils.successResponse(res, req, 200, {
-//             message: "Main controller",
-//             foo: "bar",
-//         });
-//     } catch (error) {
-//         next(error);
-//     }
-// };
+        // comment by user
+        let comments = await Comment.find({authorId: req.connectedUser.id}).select("-__v -_id");
 
-// exports.mainErrorController = (req, res, next) => {
-//     try {
-//         // custom status code before throw error
-//         responseUtils.errorResponse(req, errors.errors.FORBIDDEN, "Main error controller");
-//     } catch (error) {
-//         next(error);
-//     }
-// };
-
-// exports.dataBaseController = async (req, res, next) => {
-//     try {
-//         if (!USE_DATABASE) {
-//             responseUtils.errorResponse(req, errors.errors.FORBIDDEN, "Database is not used");
-//         }
-
-//         // insert data to database
-//         let newData = new exampleModel({
-//             name: uuidv4(),
-//             age: 20,
-//         });
-//         await newData.save();
-
-//         let data = await exampleModel.find({});
-//         return responseUtils.successResponse(res, req, 200, {
-//             message: "Main error controller",
-//             data: responseUtils.safeDatabaseArray(data),
-//         });
-//     } catch (error) {
-//         next(error);
-//     }
-// };
+        // return success
+        return responseUtils.successResponse(res, req, 200, {
+            message: "User profile",
+            user: responseUtils.safeDatabaseData(user),
+            comments: responseUtils.safeDatabaseArray(comments),
+        });
+    } catch (error) {
+        next(error);
+    }
+};

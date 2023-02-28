@@ -41,6 +41,15 @@ const generateCompanyIdentifier = (siren, name) => {
     return `${siren}_${formattedName}`;
 };
 
+const getCompanyNameFromIdentifier = (companyIdentifier) => {
+    const splittedIdentifier = companyIdentifier.split("_");
+    console.log(splittedIdentifier);
+    if (splittedIdentifier.length < 2) {
+        return null;
+    }
+    return splittedIdentifier[1];
+};
+
 const getCompanyInfos = async (req, {
     queryString,
     postalCode,
@@ -160,11 +169,17 @@ exports.comment = async (req, res, next) => {
             responseUtils.errorResponse(req, errors.errors.FORBIDDEN, "Comment too long");
         }
 
+        let companyName = getCompanyNameFromIdentifier(companyIdentifier);
+        if (!companyName) {
+            responseUtils.errorResponse(req, errors.errors.FORBIDDEN, "Invalid company identifier");
+        }
+
         const newComment = new Comment({
             anonymous: anonymous,
             authorId: req.connectedUser.id,
             author: anonymous ? "Anonyme" : req.connectedUser.username,
             comment: comment,
+            company: companyName,
             companyIdentifier: companyIdentifier,
         });
         await newComment.save();

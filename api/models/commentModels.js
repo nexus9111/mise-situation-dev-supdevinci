@@ -18,6 +18,10 @@ const commentSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    company: {
+        type: String,
+        required: true,
+    },
     companyIdentifier: {
         type: String,
         required: true,
