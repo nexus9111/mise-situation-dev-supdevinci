@@ -1,15 +1,17 @@
 import React from "react";
+import { useNavigate } from "react-router";
 import { Button, Checkbox, Form, Input, Col, Row } from "antd";
 import authController from "../services/auth";
 
+const REGISTER_REDIRECT = "/";
+
 const RegisterPages = ({ setToken }) => {
-    
+  const navigate = useNavigate();
   const onFinish = async (value) => {
     if (value.retypedPassword !== value.password) {
       alert("Password does not match");
       return;
     }
-    // register
     try {
       await authController.register(
         value.email,
@@ -24,6 +26,7 @@ const RegisterPages = ({ setToken }) => {
     const token = sessionStorage.getItem("token");
     setToken(token);
     console.log("Success:", value);
+    navigate(REGISTER_REDIRECT);
   };
 
   const onFinishFailed = (errorInfo) => {
