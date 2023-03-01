@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 const USE_MOCK = true;
 
-const URL = 'http://localhost:3000';
+const URL = 'http://localhost:3001';
 const REGISTER_URL = `${URL}/users/register`;
 const LOGIN_URL = `${URL}/users/login`;
 const SEARCH_URL = `${URL}/companies`;
@@ -267,7 +267,6 @@ const getActivitySections = () => {
 	// return ACTIVITY_SECTIONS_ENUM;
 	// convert it to array
 	let activitySections = Object.entries(ACTIVITY_SECTIONS_ENUM);
-	console.log(activitySections);
 	return activitySections;
 }
 

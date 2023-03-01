@@ -1,18 +1,11 @@
 import { Icon } from "leaflet";
+import { v4 as uuidv4 } from 'uuid';
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 import "leaflet/dist/leaflet.css";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 
 const mapComponent = ({ points }) => {
-    let center;
-    // console.log(points);
-    if(points.length === 0){
-        console.log(points);
-        center = [48, 2];
-    }else{
-        center = points[0];
-    }
   return (
     <div className="map-container">
       <MapContainer
@@ -29,6 +22,7 @@ const mapComponent = ({ points }) => {
           return (
             <Marker
               position={point}
+              key={uuidv4()}
               icon={
                 new Icon({
                   iconUrl: markerIcon,

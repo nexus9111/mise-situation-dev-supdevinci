@@ -1,8 +1,6 @@
-import { v4 as uuidv4 } from 'uuid';
+const USE_MOCK = false;
 
-const USE_MOCK = true;
-
-const URL = 'http://localhost:3000';
+const URL = 'http://localhost:3001';
 const SEARCH_URL = `${URL}/companies`;
 
 const mockedSearchResults = {
@@ -78,7 +76,7 @@ const mockedSearchResults = {
 				}
 			},
             {
-				"companyIdentifier": "842075988_HIVENTIVE",
+				"companyIdentifier": "84sd2075988_HIVENTIVE",
 				"siren": "842075988",
 				"name": "Youtube",
 				"establishmentCount": 1,
@@ -145,7 +143,7 @@ const mockedSearchResults = {
 				}
 			},
             {
-				"companyIdentifier": "842075988_HIVENTIVE",
+				"companyIdentifier": "8420fd75988_HIVENTIVE",
 				"siren": "842075988",
 				"name": "Sonerezh",
 				"establishmentCount": 1,
@@ -263,30 +261,38 @@ const getActivitySectionValue = (activitySectionCode) => {
 
 const searchCompanies = async (queryString, postalCode, department, principalActivitySection, page, limit) => {
 	console.log(queryString);
+	if (!queryString && !postalCode && !department && !principalActivitySection) {
+		return {};
+	}
+
     if (USE_MOCK) {
-        return mockedSearchResults;
+        return mockedSearchResults.data;
     }
 
     let urlSuffix = "?";
     if (queryString) {
-        urlSuffix += `q=${queryString}&`;
+        urlSuffix += `queryString=${queryString}&`;
     }
 
     if (postalCode) {
-        urlSuffix += `code_postal=${postalCode}&`;
+        urlSuffix += `postalCode=${postalCode}&`;
     }
 
     if (department) {
-        urlSuffix += `departement=${department}&`;
+        urlSuffix += `department=${department}&`;
     }
 
     if (principalActivitySection) {
-        urlSuffix += `section_activite_principale=${principalActivitySection}&`;
+        urlSuffix += `principalActivitySection=${principalActivitySection}&`;
     }
+	if (page.length > 0) {
+    	urlSuffix += `page=${page}&`;
+	}
+	if (limit.length > 0) {
+    	urlSuffix += `per_page=${limit}`;
+	}
 
-    urlSuffix += `page=${page}&`;
-    urlSuffix += `per_page=${limit}`;
-
+	console.log(`${SEARCH_URL}${urlSuffix}`);
     const response = await fetch(`${SEARCH_URL}${urlSuffix}`, {
         method: 'GET',
         headers: {
@@ -295,7 +301,7 @@ const searchCompanies = async (queryString, postalCode, department, principalAct
     });
     const data = await response.json();
     // verify status code
-    if (data.data.success) {
+    if (data.success) {
         return data.data;
     }
     throw new Error(data.data.message);
