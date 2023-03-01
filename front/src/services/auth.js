@@ -95,6 +95,11 @@ const mockedSearchResults = {
 	}
 }
 
+const isLogin = () => {
+    const token = sessionStorage.getItem('token');
+    return token? true : false;
+}
+
 const saveToken = (userToken) => {
     sessionStorage.setItem('token', JSON.stringify(userToken));
 }
@@ -209,5 +214,5 @@ const searchCompanies = async (queryString, postalCode, department, principalAct
 
 
 // export setToken;
-const funcs = { getToken, login, register, searchCompanies }
+const funcs = { getToken, login, register, searchCompanies, isLogin }
 export default funcs;

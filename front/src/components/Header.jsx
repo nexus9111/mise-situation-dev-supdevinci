@@ -1,9 +1,19 @@
 import { useNavigate } from "react-router-dom";
 import { Layout, Menu } from "antd";
+import { useEffect, useState } from "react";
+import authController from "../services/auth";
 const { Header } = Layout;
-const HeaderComponent = () => {
-  const navigate = useNavigate();
 
+const HeaderComponent = () => {
+  const [isLogin, setisLogin] = useState(false);
+  useEffect(() => {
+    const login = authController.isLogin();
+    if (login) {
+      setisLogin(true);
+    }
+  }, []);
+  const navigate = useNavigate();
+  
   const navList = [
     {
       key: "Recherche",
@@ -14,14 +24,15 @@ const HeaderComponent = () => {
       },
     },
     {
-      key: "S'identifier",
-      label: "S'identifier",
+      key: isLogin ? "Profile" : "S'identifier",
+      label: isLogin ? "Profile" : "S'identifier",
       style: { fontSize: 15, textAlign: "center" },
       onClick: () => {
-        navigate("/login");
+        navigate(isLogin ? "/profile" : "/login");
       },
     },
   ];
+  
 
   return (
     <Layout
