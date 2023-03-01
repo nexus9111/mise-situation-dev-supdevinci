@@ -5,8 +5,6 @@ const FormItem = Form.Item;
 const {password1, setPassword1}= useState("");
 const {password2, setPassword2}= useState("");
 
-
-
 const onFinish1 = (value) => {
     setPassword1(value.password1);
     console.log(value);
@@ -53,7 +51,6 @@ const Register = () => {
 
             
                 <FormItem
-                
                     name="password1"
                     onFinish={onFinish1}
                     label="Entrez votre mot de passe"
@@ -63,13 +60,10 @@ const Register = () => {
                             message: 'Entrez votre mot de passe'
                         }
                     ]}
-                
                 >
                     <Input.Password />
-
                 </FormItem>
                 <FormItem
-                
                     name="password2"
                     onFinish={onFinish2}
                     label="Entrez votre mot de passe"
@@ -79,7 +73,6 @@ const Register = () => {
                             message: 'Entrez votre mot de passe'
                         }
                     ]}
-                
                 >
                     <Input.Password />
 

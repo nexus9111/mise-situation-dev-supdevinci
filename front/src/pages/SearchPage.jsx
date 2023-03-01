@@ -9,21 +9,33 @@ import apiController from "../services/apiSearchHelper";
 const SearchPage = () => {
     const [companies, setCompanies] = useState([]);
     const [selectedCompany, setSelectedCompany] = useState([]);
+    const [filterName, setfilterName] = useState("");
+    const [filterCodePostal, setfilterCodePostal] = useState("");
+    const [filterDepartement, setfilterDepartement] = useState("");
+    const [filterActivity, setfilterActivity] = useState("");
+
 
     useEffect(() => {
-        apiController.searchCompanies("", "", "", "", "", "").then((res) => {
+        apiController.searchCompanies(filterName, filterCodePostal, filterDepartement, filterActivity, "", "").then((res) => {
             setCompanies(res.data.companies);
         });
-    }, []);
+    }, [filterActivity, filterCodePostal, filterDepartement, filterName]);
 
     const selectCompany = (company) => {
         // console.log(company);
         setSelectedCompany(company);
+    };   
+    
+    const setfilters = (nom, codePostal, Departement, Activity) => {
+        setfilterActivity(Activity);
+        setfilterCodePostal(codePostal);
+        setfilterDepartement(Departement);
+        setfilterName(nom);
     };
 
     return (
         <>
-            <Filter/>
+            <Filter setfilters={setfilters}/>
             <Row>
                 <Col span={14}>
                     <Row>

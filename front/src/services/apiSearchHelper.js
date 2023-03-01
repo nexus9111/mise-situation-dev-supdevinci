@@ -262,6 +262,7 @@ const getActivitySectionValue = (activitySectionCode) => {
 }
 
 const searchCompanies = async (queryString, postalCode, department, principalActivitySection, page, limit) => {
+	console.log(queryString);
     if (USE_MOCK) {
         return mockedSearchResults;
     }
