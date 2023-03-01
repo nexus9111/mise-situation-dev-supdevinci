@@ -69,7 +69,7 @@ const SearchPage = () => {
                 return (
                   <Col
                     key={company.companyIdentifier}
-                    span={12}
+                    span={24}
                     onClick={() => selectCompany(company)}
                   >
                     <Card company={company} />

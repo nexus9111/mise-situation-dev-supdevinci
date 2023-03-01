@@ -300,6 +300,7 @@ const searchCompanies = async (queryString, postalCode, department, principalAct
         }
     });
     const data = await response.json();
+	console.log(data.data.companies[0].owners);
     // verify status code
     if (data.success) {
         return data.data;
