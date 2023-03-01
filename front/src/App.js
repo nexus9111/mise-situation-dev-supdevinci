@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import HomePage from './pages/Home';
+import SearchPage from './pages/SearchPage';
 import Login from './pages/LoginPage';
 import Register from './pages/RegisterPage';
 
@@ -13,6 +14,7 @@ function App() {
       <div className="content-layout">
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/search" element={<SearchPage />} />
           <Route path="/login" element={<Login setToken={setToken} />} />
           <Route path="/register" element={<Register setToken={setToken}/>} />
         </Routes>

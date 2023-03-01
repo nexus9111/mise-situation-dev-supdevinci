@@ -2,11 +2,9 @@ import { v4 as uuidv4 } from 'uuid';
 
 const USE_MOCK = true;
 
-const URL = 'http://localhost:3000';
+const URL = 'http://localhost:3001';
 const REGISTER_URL = `${URL}/users/register`;
 const LOGIN_URL = `${URL}/users/login`;
-const PROFILE_URL = `${URL}/users/profile`;
-const SEARCH_URL = `${URL}/companies`;
 
 const mockedProdileResults = {
     "success": true,
@@ -129,6 +127,17 @@ const getToken = () => {
     return userToken?.token
 }
 
+const getActivitySections = () => {
+	// return ACTIVITY_SECTIONS_ENUM;
+	// convert it to array
+	let activitySections = Object.entries(ACTIVITY_SECTIONS_ENUM);
+	return activitySections;
+}
+
+const getActivitySection = (rawActivitySection) => {
+	return ACTIVITY_SECTIONS_ENUM[rawActivitySection];
+}
+
 const login = async (email, password) => {
     // mock token
     if (USE_MOCK) {
@@ -191,6 +200,9 @@ const register = async (email, password, username) => {
     throw new Error(data.data.message);
 }
 
+
+
+
 const profile = async () => {
     // mock token
     if (USE_MOCK) {
@@ -211,6 +223,8 @@ const profile = async () => {
     }
     throw new Error(data.data.message);
 }
+
+
 
 const searchCompanies = async (queryString, postalCode, department, principalActivitySection, page, limit) => {
     if (USE_MOCK) {
@@ -251,8 +265,6 @@ const searchCompanies = async (queryString, postalCode, department, principalAct
     throw new Error(data.data.message);
 }
 
-
-
 // export setToken;
-const funcs = { getToken, login, register, searchCompanies }
+const funcs = { getToken, login, register, searchCompanies, getActivitySections, getActivitySection, searchCompanies }
 export default funcs;
