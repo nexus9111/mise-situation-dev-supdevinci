@@ -30,6 +30,11 @@ const mockedProfileResults = {
     }
 }
 
+const isLogin = () => {
+    const token = sessionStorage.getItem('token');
+    return token ? true : false;
+}
+
 const saveToken = (userToken) => {
     sessionStorage.setItem('token', JSON.stringify(userToken));
 }
@@ -127,5 +132,5 @@ const profile = async () => {
 }
 
 // export setToken;
-const funcs = { getToken, login, register, profile }
+const funcs = { getToken, login, register, profile, isLogin }
 export default funcs;

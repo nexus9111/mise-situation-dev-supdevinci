@@ -33,7 +33,7 @@ const LoginPages = ({ setToken }) => {
 
   return (
     <>
-      <HeaderComponent />
+      <HeaderComponent/>
       <Row justify={"center"}>
         <Col span={10}>
           <Form
