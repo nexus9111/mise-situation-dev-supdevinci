@@ -6,6 +6,7 @@ import Map from "../components/Map.jsx";
 import Filter from "../components/Filter";
 
 import apiController from "../services/apiSearchHelper";
+import HeaderComponent from "../components/Header.jsx";
 
 const { Title } = Typography;
 
@@ -56,6 +57,7 @@ const SearchPage = () => {
 
   return (
     <>
+      <HeaderComponent />
       <Filter setfilters={setfilters} />
       <Row>
         <Col span={14}>
@@ -65,7 +67,11 @@ const SearchPage = () => {
             <Row>
               {companies.map((company) => {
                 return (
-                  <Col key={company.companyIdentifier} span={12} onClick={() => selectCompany(company)}>
+                  <Col
+                    key={company.companyIdentifier}
+                    span={12}
+                    onClick={() => selectCompany(company)}
+                  >
                     <Card company={company} />
                   </Col>
                 );
@@ -77,6 +83,9 @@ const SearchPage = () => {
           {selectedCompany.establishments &&
           selectedCompany.establishments.length > 0 ? (
             <Map
+              style={{
+                zIndex: 1,
+              }}
               points={selectedCompany.establishments.map((establishment) => {
                 if (!establishment.latitude || !establishment.longitude) {
                   return [0, 0];

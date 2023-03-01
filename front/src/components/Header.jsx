@@ -34,7 +34,7 @@ const HeaderComponent = () => {
           position: "fixed",
           left: 0,
           top: 0,
-          zIndex: 1,
+          zIndex: 10,
           width: "100%",
           background: "#1677FF",
           boxShadow: "5px 8px 10px 5px rgba(208, 216, 243, 1)",

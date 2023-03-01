@@ -12,7 +12,7 @@ const mapComponent = ({ points }) => {
         center = {[48, 2]}
         zoom={5}
         scrollWheelZoom={true}
-        style={{ height: "97vh", width: "100%" }}
+        style={{ height: "97vh", width: "100%", zIndex: 1 }}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
