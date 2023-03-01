@@ -1,6 +1,7 @@
-import { Card, Typography, Space } from "antd";
+import { Card, Typography, Space, Modal, Button } from "antd";
 import { EditOutlined, CommentOutlined } from "@ant-design/icons";
 import { useEffect } from "react";
+import { useState } from 'react';
 import "../styles/cardStyle.css";
 
 const { Text } = Typography;
@@ -20,7 +21,24 @@ const CardComponent = ({ company }) => {
     console.log(company);
   }, [company]);
 
+  const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
+  const showModal = () => {
+    setOpen(true);
+  };
+  const handleOk = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setOpen(false);
+    }, 3000);
+  };
+  const handleCancel = () => {
+    setOpen(false);
+  };
+
   return (
+    <>
     <div className="card-Container">
       <Card
         title={company.name}
@@ -28,7 +46,7 @@ const CardComponent = ({ company }) => {
         className="card"
         extra={`SIREN: ${company.siren}`}
         actions={[
-          <CommentOutlined key="setting" />,
+          <CommentOutlined key="setting" onClick={showModal} />,
           <CommentOutlined key="edit" />,
           <EditOutlined key="ellipsis" />,
         ]}
@@ -82,6 +100,37 @@ const CardComponent = ({ company }) => {
         </Card.Grid>
       </Card>
     </div>
+
+    <Modal
+        open={open}
+        title="Title"
+        onOk={handleOk}
+        onCancel={handleCancel}
+        footer={[
+          <Button key="back" onClick={handleCancel}>
+            Return
+          </Button>,
+          <Button key="submit" type="primary" loading={loading} onClick={handleOk}>
+            Submit
+          </Button>,
+          <Button
+            key="link"
+            href="https://google.com"
+            type="primary"
+            loading={loading}
+            onClick={handleOk}
+          >
+            Search on Google
+          </Button>,
+        ]}
+      >
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </Modal>
+    </>
   );
 };
 

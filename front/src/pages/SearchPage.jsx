@@ -1,4 +1,4 @@
-import { Col, Row, Typography } from "antd";
+import { Col, Row, Typography, Modal} from "antd";
 import { useEffect, useState } from "react";
 
 import Card from "../components/Card.jsx";
