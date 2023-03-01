@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+import { useNavigate } from "react-router-dom";
 
 const USE_MOCK = true;
 
@@ -43,6 +44,11 @@ const getToken = () => {
     const tokenString = sessionStorage.getItem('token');
     const userToken = JSON.parse(tokenString);
     return userToken?.token
+}
+
+const logout = () => {
+    console.log("Je suis une petite pute")
+    sessionStorage.removeItem('token');
 }
 
 const login = async (email, password) => {
@@ -132,5 +138,5 @@ const profile = async () => {
 }
 
 // export setToken;
-const funcs = { getToken, login, register, profile, isLogin }
+const funcs = { getToken, login, register, profile, isLogin, logout }
 export default funcs;

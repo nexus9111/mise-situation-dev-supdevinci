@@ -5,6 +5,7 @@ import HomePage from './pages/Home';
 import SearchPage from './pages/SearchPage';
 import Login from './pages/LoginPage';
 import Register from './pages/RegisterPage';
+import ProfilPage from './pages/ProfilPage';
 
 function App() {
   const [token, setToken] = useState();
@@ -17,6 +18,7 @@ function App() {
           <Route path="/search" element={<SearchPage />} />
           <Route path="/login" element={<Login setToken={setToken} />} />
           <Route path="/register" element={<Register setToken={setToken}/>} />
+          <Route path="/profile" element={<ProfilPage token={token} />} />
         </Routes>
       </div>
     </BrowserRouter>
