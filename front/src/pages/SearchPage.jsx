@@ -1,9 +1,10 @@
 import { Col, Row } from "antd";
-import apiController from "../services/auth";
 import { useEffect, useState } from "react";
 import Card from "../components/Card.jsx";
 import Map from "../components/Map.jsx";
 import Filter from "../components/Filter";
+
+import apiController from "../services/apiSearchHelper";
 
 const SearchPage = () => {
     const [companies, setCompanies] = useState([]);
