@@ -1,19 +1,22 @@
 import { useNavigate } from "react-router-dom";
 import { Layout, Menu } from "antd";
 import { useEffect, useState } from "react";
+
 import authController from "../services/auth";
+
 const { Header } = Layout;
 
 const HeaderComponent = () => {
-  const [isLogin, setisLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
+  const navigate = useNavigate();
+
   useEffect(() => {
     const login = authController.isLogin();
     if (login) {
-      setisLogin(true);
+      setIsLogin(true);
     }
   }, []);
-  const navigate = useNavigate();
-  
+
   const navList = [
     {
       key: "Recherche",
@@ -32,7 +35,6 @@ const HeaderComponent = () => {
       },
     },
   ];
-  
 
   return (
     <Layout

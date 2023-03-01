@@ -97,7 +97,7 @@ const mockedSearchResults = {
 
 const isLogin = () => {
     const token = sessionStorage.getItem('token');
-    return token? true : false;
+    return token ? true : false;
 }
 
 const saveToken = (userToken) => {
