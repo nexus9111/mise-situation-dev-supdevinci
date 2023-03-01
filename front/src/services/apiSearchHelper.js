@@ -1,4 +1,4 @@
-const USE_MOCK = true;
+const USE_MOCK = false;
 
 const URL = 'http://localhost:3001';
 const SEARCH_URL = `${URL}/companies`;
@@ -59,7 +59,7 @@ const mockedSearchResults = {
 							"anonymous": true,
 							"author": "Anonyme",
 							"authorId": "7bda9ddc-ee59-4b20-92c0-901961b937c3",
-							"comment": "le patron est le fils d'hitler",
+							"comment": "ceci esty un commentaire",
 							"companyIdentifier": "842075988_HIVENTIVE",
 							"id": "332562c4-4e87-4383-b67c-8c98a0e490bb"
 						},
@@ -67,7 +67,7 @@ const mockedSearchResults = {
 							"anonymous": true,
 							"author": "hackonix",
 							"authorId": "7bda9ddc-ee59-4b20-92c0-901961b937c3",
-							"comment": "le patron est le fils d'hitler",
+							"comment": "ceci esty un commentaire",
 							"companyIdentifier": "842075988_HIVENTIVE",
 							"id": "0a52ec67-b64e-46a9-af83-cfdd44f79fd0"
 						}
