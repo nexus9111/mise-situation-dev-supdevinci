@@ -130,7 +130,7 @@ const getToken = () => {
     return userToken?.token
 }
 
-const Logout = () => {
+const logout = () => {
     console.log("Je suis une petite pute")
     sessionStorage.removeItem('token');
 }
@@ -260,5 +260,5 @@ const searchCompanies = async (queryString, postalCode, department, principalAct
 
 
 // export setToken;
-const funcs = { getToken, login, register, searchCompanies, profile, Logout }
+const funcs = { getToken, login, register, searchCompanies, profile, logout }
 export default funcs;
