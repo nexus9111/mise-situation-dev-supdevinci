@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Card from "../components/Card.jsx";
 import Map from "../components/Map.jsx";
 import Filter from "../components/Filter";
+import "../styles/style.css";
 
 import apiController from "../services/apiSearchHelper";
 import HeaderComponent from "../components/Header.jsx";
@@ -60,7 +61,8 @@ const SearchPage = () => {
       <HeaderComponent />
       <Filter setfilters={setfilters} />
       <Row>
-        <Col xs={24} sm={24} md={24} lg={14} xl={14}>
+        <Col xs={24} sm={24} md={24} lg={14} xl={14}
+        className="search-page">
           {companies.length === 0 ? (
             <Title level={3}> Aucun résultat </Title>
           ) : (

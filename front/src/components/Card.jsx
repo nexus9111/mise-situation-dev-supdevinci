@@ -1,7 +1,7 @@
 import { Card, Typography, Space } from "antd";
 import { EditOutlined, CommentOutlined } from "@ant-design/icons";
 import { useEffect } from "react";
-import "../styles/cardStyle.css";
+import "../styles/style.css";
 
 const { Text } = Typography;
 
