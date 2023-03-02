@@ -1,4 +1,4 @@
-const USE_MOCK = false;
+const USE_MOCK = true;
 
 const URL = 'http://localhost:3001';
 const SEARCH_URL = `${URL}/companies`;
@@ -76,7 +76,7 @@ const mockedSearchResults = {
 				}
 			},
             {
-				"companyIdentifier": "84sd2075988_HIVENTIVE",
+				"companyIdentifier": "84sd2075988_YOUTUBE",
 				"siren": "842075988",
 				"name": "Youtube",
 				"establishmentCount": 1,
@@ -107,7 +107,7 @@ const mockedSearchResults = {
 						"geo_id": "33318_2907_00020",
 						"latitude": "44.794884",
 						"liste_enseignes": [
-							"HIVENTIVE"
+							"Youtube"
 						],
 						"liste_finess": null,
 						"liste_idcc": [
@@ -116,7 +116,7 @@ const mockedSearchResults = {
 						"liste_rge": null,
 						"liste_uai": null,
 						"longitude": "-0.607271",
-						"nom_commercial": "HIVENTIVE",
+						"nom_commercial": "Youtube",
 						"siret": "84207598800019"
 					}
 				],
@@ -127,7 +127,7 @@ const mockedSearchResults = {
 							"author": "Anonyme",
 							"authorId": "7bda9ddc-ee59-4b20-92c0-901961b937c3",
 							"comment": "le patron est le fils d'hitler",
-							"companyIdentifier": "842075988_HIVENTIVE",
+							"companyIdentifier": "84sd2075988_YOUTUBE",
 							"id": "332562c4-4e87-4383-b67c-8c98a0e490bb"
 						},
 						{
@@ -135,15 +135,40 @@ const mockedSearchResults = {
 							"author": "hackonix",
 							"authorId": "7bda9ddc-ee59-4b20-92c0-901961b937c3",
 							"comment": "le patron est le fils d'hitler",
-							"companyIdentifier": "842075988_HIVENTIVE",
+							"companyIdentifier": "84sd2075988_YOUTUBE",
 							"id": "0a52ec67-b64e-46a9-af83-cfdd44f79fd0"
 						}
 					],
-					"clientComments": []
+					"clientComments": [
+						{
+							"anonymous": false,
+							"author": "hackonix",
+							"authorId": "7bda9ddc-ee59-4b20-92c0-901961b937c3",
+							"comment": "Je vend une clio 4 break année 2013 d'occasion en bon état 25000 euros, pas sérieux d'abstenir merci",
+							"companyIdentifier": "84sd2075988_YOUTUBE",
+							"id": "0a52ec67-b64e-46a9-af83-cfdd44f79fd0"
+						},
+						{
+							"anonymous": false,
+							"author": "hackonix",
+							"authorId": "7bda9ddc-ee59-4b20-92c0-901961b937c3",
+							"comment": "Je m'appelle Chams et j'ai une grosse biroute hihi",
+							"companyIdentifier": "84sd2075988_YOUTUBE",
+							"id": "0a52ec67-b64e-46a9-af83-cfdd44f79fd0"
+						},
+						{
+							"anonymous": false,
+							"author": "hackonix",
+							"authorId": "7bda9ddc-ee59-4b20-92c0-901961b937c3",
+							"comment": "Quand j'aurai un fils je l'appellerai Joel",
+							"companyIdentifier": "84sd2075988_YOUTUBE",
+							"id": "0a52ec67-b64e-46a9-af83-cfdd44f79fd0"
+						}
+					]
 				}
 			},
             {
-				"companyIdentifier": "8420fd75988_HIVENTIVE",
+				"companyIdentifier": "8420fd75988_SONEREZH",
 				"siren": "842075988",
 				"name": "Sonerezh",
 				"establishmentCount": 1,
@@ -174,7 +199,7 @@ const mockedSearchResults = {
 						"geo_id": "33318_2907_00020",
 						"latitude": "44.794884",
 						"liste_enseignes": [
-							"HIVENTIVE"
+							"Sonerezh"
 						],
 						"liste_finess": null,
 						"liste_idcc": [
@@ -183,7 +208,7 @@ const mockedSearchResults = {
 						"liste_rge": null,
 						"liste_uai": null,
 						"longitude": "-0.607271",
-						"nom_commercial": "HIVENTIVE",
+						"nom_commercial": "Sonerezh",
 						"siret": "84207598800019"
 					}
 				],
@@ -194,7 +219,7 @@ const mockedSearchResults = {
 							"author": "Anonyme",
 							"authorId": "7bda9ddc-ee59-4b20-92c0-901961b937c3",
 							"comment": "le patron est le fils d'hitler",
-							"companyIdentifier": "842075988_HIVENTIVE",
+							"companyIdentifier": "8420fd75988_SONEREZH",
 							"id": "332562c4-4e87-4383-b67c-8c98a0e490bb"
 						},
 						{
@@ -202,7 +227,7 @@ const mockedSearchResults = {
 							"author": "hackonix",
 							"authorId": "7bda9ddc-ee59-4b20-92c0-901961b937c3",
 							"comment": "le patron est le fils d'hitler",
-							"companyIdentifier": "842075988_HIVENTIVE",
+							"companyIdentifier": "8420fd75988_SONEREZH",
 							"id": "0a52ec67-b64e-46a9-af83-cfdd44f79fd0"
 						}
 					],
