@@ -39,7 +39,7 @@ const HeaderComponent = () => {
   return (
     <Layout
       style={{
-        marginBottom: "6em",
+        marginBottom: "4em",
       }}
     >
       <Header

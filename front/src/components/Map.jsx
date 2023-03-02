@@ -10,12 +10,9 @@ const mapComponent = ({ points }) => {
   return (
     <div className="map-container">
       <MapContainer
-        center={[48, 2]}
+        center={[48.856614, 2.3522219]}
         zoom={5}
-        scrollWheelZoom={false}
-        style={{
-          zIndex: 1,
-        }}
+        scrollWheelZoom={true}
         className="map"
       >
       <TileLayer

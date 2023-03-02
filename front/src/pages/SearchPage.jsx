@@ -27,7 +27,18 @@ const SearchPage = () => {
         filterDepartment === "" &&
         filterActivity === ""
       ) {
-        return;
+        const res = await apiController.searchCompanies(
+          "aes",
+          "",
+          "",
+          "",
+          "",
+          ""
+        );
+        if (!res.companies || res.companies.length === 0) {
+          return;
+        }
+        return setCompanies(res.companies);
       }
 
       const res = await apiController.searchCompanies(
@@ -86,7 +97,7 @@ const SearchPage = () => {
           selectedCompany.establishments.length > 0 ? (
             <Map
               style={{
-                zIndex: 1,
+                zIndex: 0,
               }}
               points={selectedCompany.establishments.map((establishment) => {
                 if (!establishment.latitude || !establishment.longitude) {
