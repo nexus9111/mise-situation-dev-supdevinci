@@ -11,7 +11,7 @@ const mapComponent = ({ points }) => {
       <MapContainer
         center = {[48, 2]}
         zoom={5}
-        scrollWheelZoom={true}
+        scrollWheelZoom={false}
         style={{ height: "97vh", width: "100%", zIndex: 1 }}
       >
         <TileLayer

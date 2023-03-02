@@ -60,7 +60,7 @@ const SearchPage = () => {
       <HeaderComponent />
       <Filter setfilters={setfilters} />
       <Row>
-        <Col span={14}>
+        <Col xs={24} sm={24} md={24} lg={14} xl={14}>
           {companies.length === 0 ? (
             <Title level={3}> Aucun résultat </Title>
           ) : (
@@ -79,7 +79,7 @@ const SearchPage = () => {
             </Row>
           )}
         </Col>
-        <Col span={10} style={{ height: "98vh", width: "100%" }}>
+        <Col  xs={24} sm={24} md={24} lg={10} xl={10} style={{ height: "98vh", width: "100%" }}>
           {selectedCompany.establishments &&
           selectedCompany.establishments.length > 0 ? (
             <Map
