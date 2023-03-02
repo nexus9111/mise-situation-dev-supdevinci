@@ -101,35 +101,38 @@ const CardComponent = ({ company }) => {
       </Card>
     </div>
 
-    <Modal
-        open={open}
-        title="Title"
-        onOk={handleOk}
-        onCancel={handleCancel}
-        footer={[
-          <Button key="back" onClick={handleCancel}>
-            Return
-          </Button>,
-          <Button key="submit" type="primary" loading={loading} onClick={handleOk}>
-            Submit
-          </Button>,
-          <Button
-            key="link"
-            href="https://google.com"
-            type="primary"
-            loading={loading}
-            onClick={handleOk}
-          >
-            Search on Google
-          </Button>,
-        ]}
-      >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+    //#region Modal Commentaires clients
+      <Modal
+          open={open}
+          title="Title"
+          onOk={handleOk}
+          onCancel={handleCancel}
+          footer={[
+            <Button key="back" onClick={handleCancel}>
+              Return
+            </Button>,
+            <Button key="submit" type="primary" loading={loading} onClick={handleOk}>
+              Submit
+            </Button>,
+            <Button
+              key="link"
+              href="https://google.com"
+              type="primary"
+              loading={loading}
+              onClick={handleOk}
+            >
+              Search on Google
+            </Button>,
+          ]}
+        >
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
       </Modal>
+    //#endregion 
+
     </>
   );
 };
