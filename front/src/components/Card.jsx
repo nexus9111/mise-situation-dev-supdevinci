@@ -1,6 +1,6 @@
-import { Card, Typography, Space } from "antd";
+import { Card, Typography, Space, Tooltip } from "antd";
 import { EditOutlined, CommentOutlined } from "@ant-design/icons";
-import { useEffect } from "react";
+
 import "../styles/cardStyle.css";
 
 const { Text } = Typography;
@@ -16,9 +16,10 @@ const largeGridStyle = {
 };
 
 const CardComponent = ({ company }) => {
-  useEffect(() => {
-    console.log(company);
-  }, [company]);
+  const openIndeed = () => {
+    const url = `https://fr.indeed.com/jobs?q=${company.name}`;
+    window.open(url, "_blank");
+  };
 
   return (
     <div className="card-Container">
@@ -28,9 +29,20 @@ const CardComponent = ({ company }) => {
         className="card"
         extra={`SIREN: ${company.siren}`}
         actions={[
-          <CommentOutlined key="setting" />,
-          <CommentOutlined key="edit" />,
-          <EditOutlined key="ellipsis" />,
+          <Tooltip placement="top" title={"Commentaire des clients"}>
+            <CommentOutlined key="setting" />
+          </Tooltip>,
+          <Tooltip placement="top" title={"Commentaire anciens employés"}>
+            <CommentOutlined key="edit" />
+          </Tooltip>,
+          <Tooltip placement="top" title={"Ecrir un commentaire"}>
+            <EditOutlined key="ellipsis" />
+          </Tooltip>,
+          <Tooltip placement="top" title={"Go to Indeed page"}>
+            <Text strong onClick={openIndeed}>
+              Indeed
+            </Text>
+          </Tooltip>,
         ]}
       >
         <Card.Grid style={gridStyle}>

@@ -82,8 +82,6 @@ const getCompanyInfos = async (req, {
     urlSuffix += `per_page=${limit}`;
     try {
         const data = await axios.get(COMPANY_FETCHER_URL + urlSuffix);
-        console.log(data.data);
-
         companiesDetails = [];
         for (const company of data.data.results) {
             const workerComments = await Comment.find({ companyIdentifier: generateCompanyIdentifier(company.siren, company.nom_complet), anonymous: true });

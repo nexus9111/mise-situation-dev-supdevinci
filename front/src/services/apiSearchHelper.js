@@ -1,4 +1,4 @@
-const USE_MOCK = true;
+const USE_MOCK = false;
 
 const URL = 'http://localhost:3001';
 const SEARCH_URL = `${URL}/companies`;
