@@ -26,7 +26,18 @@ const SearchPage = () => {
         filterDepartment === "" &&
         filterActivity === ""
       ) {
-        return;
+        const res = await apiController.searchCompanies(
+          "aes",
+          "",
+          "",
+          "",
+          "",
+          ""
+        );
+        if (!res.companies || res.companies.length === 0) {
+          return;
+        }
+        return setCompanies(res.companies);
       }
 
       const res = await apiController.searchCompanies(
