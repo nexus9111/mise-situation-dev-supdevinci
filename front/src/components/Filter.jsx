@@ -96,8 +96,10 @@ const Filter = ({ setfilters }) => {
         />
       </Form.Item>
 
-      <Form.Item name="Activity" label="activity" rules={[{}]} >
-        <Select placeholder="Activity" allowClear>
+      <Form.Item name="Activity" label="activity" rules={[{}]}>
+        <Select placeholder="Activity" allowClear style={{
+          width: 250,
+        }}>
           {apiController.getActivitySections().map((section) => {
             return <Option key={section} value={section}>{apiController.getActivitySectionValue(section)}</Option>;
           })}

@@ -4,13 +4,21 @@ services:
     image: mongo
     volumes:
       - mongodb:/data/db
-  app:
+  api:
     build:
-      context: .
+      context: ./api
       dockerfile: Dockerfile
     ports:
       - "3001:3001"
     depends_on:
       - mongo
+  front:
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
 volumes:
   mongodb:
