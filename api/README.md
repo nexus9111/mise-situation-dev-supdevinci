@@ -1,6 +1,4 @@
-# nodejs_boilerplate_rest_api
-
-🚀 This is all you need as a NodeJS rest API simple and secure boilerplate
+# 🎯 Api
 
 ## ℹ️ Informations
 
@@ -14,26 +12,35 @@ This api include:
 - ✨ Structured api
 Basic register/login route are implemented to show how to use the api.
 
-## 🔎 Requirements
+
+## 🛠 Installation
+
+#### 📦 With Docker (easy way)
+
+```console
+$ docker-compose build; docker-compose up -d
+```
+
+#### 🤯 Without Docker (hard way)
+
+---
+
+###### 🔎 Requirements
 
 - NodeJS installed
 - MongoDB database running on your machine
     - You can install it <a href="https://www.mongodb.com/docs/manual/administration/install-community/">here</a>
-    - Or run it thanks to my docker compose with command: 
-    ```console
-    docker-compose build; docker-compose up -d
-    ```
 
-## 🛠 Installation
+---
+
+####### ✅ Installation
 
 ```console
-$ git clone git@github.com:nexus9111/nodejs_boilerplate_rest_api.git
-$ cd nodejs_boilerplate_rest_api
 $ chmod u+x easy-install.sh
 $ ./easy-install.sh
 ```
 
-if `easy-install.sh` does not work:
+if you are on window os or `easy-install.sh` does not work:
 
 ```console
 $ cp .env.example .env.development
@@ -41,7 +48,7 @@ $ cp .env.example .env.production
 $ npm i
 ```
 
-## 🚀 Run
+####### 🚀 Run
 
 Basic run:
 
@@ -56,7 +63,9 @@ $ npm run dev
 $ npm run prod
 ```
 
+*⚠️ if you are window os user and have issue to run the api, run this commande before: `npm install -g win-node-env`*
+
 ## ✒️ License:
 
-- Author: Joss C
-- Last update: 05/02/2022
+- Author: Joss C.
+- Creation date: 27/03/2023 (dd/mm/yyyy)
