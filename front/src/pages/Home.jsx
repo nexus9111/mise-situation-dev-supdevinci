@@ -1,5 +1,6 @@
 import { Button, Checkbox, Form, Input } from "antd";
 import Header from "../components/Header";
+import Konami from "react-konami-code";
 
 const onFinish = (value) => {
   console.log("Success:", value);
@@ -9,9 +10,13 @@ const onFinishFailed = (errorInfo) => {
   console.log("Failed:", errorInfo);
 };
 const Home = () => {
+  const easterEgg = () => {
+    alert("Vous avez débloqué un secret ! Félicitations pour avoir maîtrisé le Konami Code et découvert notre Easter Egg caché.");
+  };
+
   return (
     <>
-      <Header/>
+      <Header />
       <h1>Home</h1>
       <Form
         name="basic"
@@ -63,6 +68,7 @@ const Home = () => {
           </Button>
         </Form.Item>
       </Form>
+      <Konami action={easterEgg}></Konami>
     </>
   );
 };
