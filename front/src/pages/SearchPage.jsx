@@ -1,4 +1,4 @@
-import { Col, Row, Typography } from "antd";
+import { Col, Row, Typography, notification } from "antd";
 import { useEffect, useState } from "react";
 
 import Card from "../components/Card.jsx";
@@ -17,6 +17,7 @@ const SearchPage = () => {
   const [filterPostalCode, setFilterPostalCode] = useState("");
   const [filterDepartment, setFilterDepartment] = useState("");
   const [filterActivity, setFilterActivity] = useState("");
+  const [reSearch, setReSearch] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -35,6 +36,10 @@ const SearchPage = () => {
           ""
         );
         if (!res.companies || res.companies.length === 0) {
+          notification.open({
+            message: "⚠️ Erreur",
+            description: "Aucune entreprise trouvée",
+          });
           return;
         }
         return setCompanies(res.companies);
@@ -49,11 +54,15 @@ const SearchPage = () => {
         ""
       );
       if (!res.companies || res.companies.length === 0) {
+        notification.open({
+          message: "⚠️ Erreur",
+          description: "Aucune entreprise trouvée",
+        });
         return;
       }
       setCompanies(res.companies);
     })();
-  }, [filterActivity, filterPostalCode, filterDepartment, filterName]);
+  }, [filterActivity, filterPostalCode, filterDepartment, filterName, reSearch]);
 
   const selectCompany = (company) => {
     setSelectedCompany(company);
@@ -83,14 +92,21 @@ const SearchPage = () => {
                     span={24}
                     onClick={() => selectCompany(company)}
                   >
-                    <Card company={company} />
+                    <Card company={company} reSearch={reSearch} setReSearch={setReSearch} />
                   </Col>
                 );
               })}
             </Row>
           )}
         </Col>
-        <Col  xs={24} sm={24} md={24} lg={10} xl={10} style={{ height: "98vh", width: "100%" }}>
+        <Col
+          xs={24}
+          sm={24}
+          md={24}
+          lg={10}
+          xl={10}
+          style={{ height: "98vh", width: "100%" }}
+        >
           {selectedCompany.establishments &&
           selectedCompany.establishments.length > 0 ? (
             <Map

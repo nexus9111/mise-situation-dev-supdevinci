@@ -22,7 +22,6 @@ const CommentCards = ({ comments, open, setOpen, commentType }) => {
           return (
             <div
               key={comment.id}
-              style={{ borderBottom: "5px double rgb(22, 119, 255)" }}
             >
               <p>
                 <strong>Posté par {comment.author}</strong>

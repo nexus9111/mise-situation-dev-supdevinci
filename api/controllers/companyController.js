@@ -83,8 +83,8 @@ const getCompanyInfos = async (req, {
         const data = await axios.get(COMPANY_FETCHER_URL + urlSuffix);
         companiesDetails = [];
         for (const company of data.data.results) {
-            const workerComments = await Comment.find({ companyIdentifier: generateCompanyIdentifier(company.siren, company.nom_complet), anonymous: true });
-            const clientComments = await Comment.find({ companyIdentifier: generateCompanyIdentifier(company.siren, company.nom_complet), anonymous: false });
+            const workerComments = await Comment.find({ companyIdentifier: generateCompanyIdentifier(company.siren, company.nom_complet), workerComment: true });
+            const clientComments = await Comment.find({ companyIdentifier: generateCompanyIdentifier(company.siren, company.nom_complet), workerComment: false });
             companiesDetails.push({
                 companyIdentifier: generateCompanyIdentifier(company.siren, company.nom_complet),
                 siren: company.siren,
@@ -156,7 +156,7 @@ exports.getCompanies = async (req, res, next) => {
 
 exports.comment = async (req, res, next) => {
     try {
-        const { companyIdentifier, comment, anonymous } = req.body;
+        const { companyIdentifier, comment, anonymous, workerComment } = req.body;
 
         if (!companyIdentifier || !comment) {
             responseUtils.errorResponse(req, errors.errors.FORBIDDEN, "Missing id or comment");
@@ -178,6 +178,7 @@ exports.comment = async (req, res, next) => {
             comment: comment,
             company: companyName,
             companyIdentifier: companyIdentifier,
+            workerComment: workerComment,
         });
         await newComment.save();
 

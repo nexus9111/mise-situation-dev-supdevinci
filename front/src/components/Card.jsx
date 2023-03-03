@@ -1,9 +1,12 @@
-import { Card, Typography, Space, Tooltip } from "antd";
-import { v4 as uuidv4 } from "uuid";
-import { EditOutlined, CommentOutlined } from "@ant-design/icons";
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import { Card, Typography, Space, Tooltip, notification } from "antd";
+import { EditOutlined, CommentOutlined } from "@ant-design/icons";
+
+import authHelper from "../services/auth";
 
 import CommentCards from "./CommentCard";
+import WriteCommentCard from "./WriteCommentCard";
 
 import "../styles/cardStyle.css";
 
@@ -19,20 +22,32 @@ const largeGridStyle = {
   textAlign: "center",
 };
 
-const CardComponent = ({ company }) => {
+const CardComponent = ({ company, reSearch, setReSearch }) => {
   const openIndeed = () => {
     const url = `https://fr.indeed.com/jobs?q=${company.name}`;
     window.open(url, "_blank");
   };
 
-  const [clientOpen, clientSetOpen] = useState(false);
+  const [commentModalOpen, setCommentModalOpen] = useState(false);
+  const [writeCommentModalOpen, setWriteCommentModalOpen] = useState(false);
   const [selectedComments, clientSelectedComments] = useState([]);
   const [commentType, SetCommentType] = useState("");
 
-  const clientShowModal = (comments, type) => {
+  const showCommentModal = (comments, type) => {
     clientSelectedComments(comments);
     SetCommentType(type);
-    clientSetOpen(true);
+    setCommentModalOpen(true);
+  };
+
+  const showWriteCommentModal = () => {
+    if (!authHelper.isLogin()) {
+      notification.open({
+        message: "⚠️ Opération non autorisée",
+        description: "Vous devez être connecté pour écrire un commentaire",
+      });
+      return
+    }
+    setWriteCommentModalOpen(true);
   };
 
   return (
@@ -47,17 +62,24 @@ const CardComponent = ({ company }) => {
             <Tooltip placement="top" title={"Commentaire des clients"}>
               <CommentOutlined
                 key="setting"
-                onClick={() => clientShowModal(company.comments.clientComments, "clients")}
+                onClick={() =>
+                  showCommentModal(company.comments.clientComments, "clients")
+                }
               />
             </Tooltip>,
             <Tooltip placement="top" title={"Commentaire anciens employés"}>
-              <CommentOutlined 
-              key="edit" 
-              onClick={() => clientShowModal(company.comments.workerComments, "ancien employés")}
+              <CommentOutlined
+                key="edit"
+                onClick={() =>
+                  showCommentModal(
+                    company.comments.workerComments,
+                    "ancien employés"
+                  )
+                }
               />
             </Tooltip>,
-            <Tooltip placement="top" title={"Ecrir un commentaire"} disabled>
-              <EditOutlined key="ellipsis" />
+            <Tooltip placement="top" title={"Écrire un commentaire"} disabled>
+              <EditOutlined key="ellipsis" onClick={showWriteCommentModal} />
             </Tooltip>,
             <Tooltip placement="top" title={"Go to Indeed page"}>
               <Text strong onClick={openIndeed}>
@@ -121,10 +143,18 @@ const CardComponent = ({ company }) => {
       </div>
 
       <CommentCards
-        open={clientOpen}
-        setOpen={clientSetOpen}
+        open={commentModalOpen}
+        setOpen={setCommentModalOpen}
         comments={selectedComments}
         commentType={commentType}
+      />
+
+      <WriteCommentCard 
+        open={writeCommentModalOpen}
+        companyIdentifier={company.companyIdentifier}
+        setOpen={setWriteCommentModalOpen}
+        reSearch={reSearch}
+        setReSearch={setReSearch}
       />
     </>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router";
-import { Button, Checkbox, Form, Input, Col, Row } from "antd";
+import { Button, Checkbox, Form, Input, Col, Row, notification } from "antd";
 import authController from "../services/auth";
 import HeaderComponent from "../components/Header";
 
@@ -10,7 +10,10 @@ const RegisterPages = ({ setToken }) => {
   const navigate = useNavigate();
   const onFinish = async (value) => {
     if (value.retypedPassword !== value.password) {
-      alert("Password does not match");
+      notification.open({
+        message: "⚠️ Erreur",
+        description: "Les mots de passe ne correspondent pas",
+      });
       return;
     }
     try {
@@ -21,7 +24,10 @@ const RegisterPages = ({ setToken }) => {
       );
     } catch (error) {
       console.log(error);
-      alert("Register failed");
+      notification.open({
+        message: "⚠️ Erreur",
+        description: "Email ou mot de passe incorrect",
+      });
       return;
     }
     const token = sessionStorage.getItem("token");
@@ -106,11 +112,13 @@ const RegisterPages = ({ setToken }) => {
             >
               <Checkbox> Remember me </Checkbox>
             </Form.Item>
-            <Form.Item  style={{
+            <Form.Item
+              style={{
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-              }}>
+              }}
+            >
               <Button type="primary" htmlType="submit">
                 Submit
               </Button>

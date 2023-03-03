@@ -29,6 +29,10 @@ const commentSchema = new mongoose.Schema({
     id: {
         type: String,
     },
+    workerComment: {
+        type: Boolean,
+        required: true,
+    },
 });
 
 // presave

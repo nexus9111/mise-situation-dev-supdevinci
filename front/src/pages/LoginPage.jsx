@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router";
-import { Button, Checkbox, Form, Input, Col, Row } from "antd";
+import { Button, Checkbox, Form, Input, Col, Row, notification } from "antd";
 import authController from "../services/auth";
 import HeaderComponent from "../components/Header";
 import { Link } from "react-router-dom";
@@ -11,15 +11,14 @@ const LoginPages = ({ setToken }) => {
   const navigate = useNavigate();
 
   const onFinish = async (value) => {
-    if (!value.password) {
-      alert("Password does not match");
-      return;
-    }
     try {
       await authController.login(value.email, value.password);
     } catch (error) {
       console.log(error);
-      alert("Login failed");
+      notification.open({
+        message: "⚠️ Erreur",
+        description: "Email ou mot de passe incorrect",
+      });
       return;
     }
     const token = sessionStorage.getItem("token");

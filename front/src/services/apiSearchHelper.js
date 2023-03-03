@@ -1,7 +1,9 @@
 const USE_MOCK = false;
+const authHelper = require('./auth');
 
 const URL = 'http://localhost:3001';
 const SEARCH_URL = `${URL}/companies`;
+const COMMENT_URL = `${URL}/companies/comment`;
 
 const mockedSearchResults = {
 	"success": true,
@@ -305,6 +307,29 @@ const searchCompanies = async (queryString, postalCode, department, principalAct
     throw new Error(data.data.message);
 }
 
+const comment = async (companyIdentifier, comment, anonymous, workerComment) => {
+	console.log(companyIdentifier, comment, anonymous, workerComment)
+	const response = await fetch(`${COMMENT_URL}`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			'authorization': authHelper.default.getToken()
+		},
+		body: JSON.stringify({
+			companyIdentifier,
+			comment,
+			anonymous,
+			workerComment
+		})
+	});
+	const data = await response.json();
+	// verify status code
+	if (data.success) {
+		return data.data;
+	}
+	throw new Error(data.data.message);
+}
+
 // export setToken;
-const funcs = { searchCompanies, getActivitySections, getActivitySectionValue }
+const funcs = { searchCompanies, getActivitySections, getActivitySectionValue, comment }
 export default funcs;
