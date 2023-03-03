@@ -19,8 +19,8 @@ const HeaderComponent = () => {
 
   const navList = [
     {
-      key: "Acceuil",
-      label: "Acceuil",
+      key: "Accueil",
+      label: "Accueil",
       style: { fontSize: 15, textAlign: "center" },
       onClick: () => {
         navigate("/");
