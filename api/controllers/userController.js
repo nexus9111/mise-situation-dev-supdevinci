@@ -8,6 +8,7 @@ const User = require("../models/userModels");
 const Comment = require("../models/commentModels");
 
 const responseUtils = require("../utils/apiResponseUtils");
+const securityUtils = require("../utils/securityUtils");
 
 const SALT_ROUNDS = 10;
 
@@ -16,6 +17,10 @@ exports.register = async (req, res, next) => {
         const { email, password, username } = req.body;
         if (!email || !password || !username) {
             responseUtils.errorResponse(req, errors.errors.FORBIDDEN, "Missing data");
+        }
+
+        if (!securityUtils.isPasswordValid(password)) {
+            responseUtils.errorResponse(req, errors.errors.FORBIDDEN, "Password is not valid");
         }
 
         // check if user already exists

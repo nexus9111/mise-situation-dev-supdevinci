@@ -135,10 +135,6 @@ const CardComponent = ({ company, reSearch, setReSearch }) => {
               })}
             </Space>
           </Card.Grid>
-          <Card.Grid style={largeGridStyle}>
-            <Text strong>Nombre d'établissements: </Text>
-            {`${company.establishmentCount}`}
-          </Card.Grid>
         </Card>
       </div>
 
