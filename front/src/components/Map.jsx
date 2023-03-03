@@ -15,7 +15,6 @@ const mapComponent = ({ points }) => {
         zoom={5}
         scrollWheelZoom={false}
         className="map"
-        style={{ height: "97vh", width: "100%", zIndex: 1 }}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
