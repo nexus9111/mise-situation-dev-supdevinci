@@ -43,7 +43,6 @@ const generateCompanyIdentifier = (siren, name) => {
 
 const getCompanyNameFromIdentifier = (companyIdentifier) => {
     const splittedIdentifier = companyIdentifier.split("_");
-    console.log(splittedIdentifier);
     if (splittedIdentifier.length < 2) {
         return null;
     }
@@ -82,7 +81,6 @@ const getCompanyInfos = async (req, {
     urlSuffix += `per_page=${limit}`;
     try {
         const data = await axios.get(COMPANY_FETCHER_URL + urlSuffix);
-        console.log(data.data);
 
         companiesDetails = [];
         for (const company of data.data.results) {

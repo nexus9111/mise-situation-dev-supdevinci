@@ -7,9 +7,7 @@ import "../styles/style.css";
 
 const { Option } = Select;
 
-const Filter = ({ setfilters }) => {
-
-  const [afficherMenu, setAfficherMenu] = useState(false);
+const Filter = ({ setfilters, setAfficherMenu, afficherMenu }) => {
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -26,7 +24,8 @@ const Filter = ({ setfilters }) => {
 
   return (
     <div
-    className="filter-container">
+    className="filter-container"
+    >
       <div>
       <Button type="primary" className="filterOpen" onClick={() => setAfficherMenu(!afficherMenu)}>
         {afficherMenu ? '<' : '>'} Filtes
