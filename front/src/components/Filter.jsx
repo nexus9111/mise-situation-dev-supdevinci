@@ -6,7 +6,7 @@ import "../styles/searchPage.css";
 
 const { Option } = Select;
 
-const Filter = ({ setfilters, setAfficherMenu, afficherMenu }) => {
+const Filter = ({ setfilters, setAfficherMenu, afficherMenu, marginBlock }) => {
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
@@ -23,13 +23,22 @@ const Filter = ({ setfilters, setAfficherMenu, afficherMenu }) => {
   return (
     <div className="filter-container">
       <div>
-        <Button
-          type="primary"
-          className="filterOpen"
-          onClick={() => setAfficherMenu(!afficherMenu)}
-        >
-          {afficherMenu ? <LeftOutlined /> : <RightOutlined />} Filtes
-        </Button>
+        {marginBlock !== 0 ? (
+          <Button
+            type="primary"
+            className="filterOpen"
+            onClick={() => setAfficherMenu(!afficherMenu)}
+          >
+            {afficherMenu ? <LeftOutlined /> : <RightOutlined />} Filtes
+          </Button>
+        ) : (
+          <div
+            style={{
+              height: "40px",
+            }}
+          ></div>
+        )}
+    
         {afficherMenu && (
           <div>
             <Form
@@ -97,9 +106,6 @@ const Filter = ({ setfilters, setAfficherMenu, afficherMenu }) => {
                 label="Departement"
                 className="filter-input"
                 name="department"
-                style={{
-                  minWidth: 150,
-                }}
                 rules={[
                   {
                     message: "Departement",
@@ -108,7 +114,7 @@ const Filter = ({ setfilters, setAfficherMenu, afficherMenu }) => {
               >
                 <Input
                   style={{
-                    width: 150,
+                    width: 200,
                   }}
                 />
               </Form.Item>
@@ -117,7 +123,7 @@ const Filter = ({ setfilters, setAfficherMenu, afficherMenu }) => {
                 name="activity"
                 label="Activity"
                 rules={[{}]}
-                className="filter-input"
+                className="filter-input activite"
               >
                 <Select
                   placeholder="Activity"
@@ -137,7 +143,6 @@ const Filter = ({ setfilters, setAfficherMenu, afficherMenu }) => {
               </Form.Item>
 
               <Form.Item
-                className="filter-input"
                 wrapperCol={{
                   offset: 8,
                   span: 16,

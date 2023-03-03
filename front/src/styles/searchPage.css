@@ -81,6 +81,11 @@
         border-bottom: solid 1px #e5e5e5;
     }
 
+    .activite {
+        width: 26em;
+        margin-bottom: 1em;
+    }
+
     .filter-form {
         margin-left: 7vh;
         margin-top: -4.5vh;

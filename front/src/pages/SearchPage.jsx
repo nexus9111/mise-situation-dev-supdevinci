@@ -37,6 +37,7 @@ const SearchPage = () => {
       }
     } else {
       setMarginBlock(0);
+      setAfficherMenu(true);
     }
   }, [afficherMenu, width]);
 
@@ -64,6 +65,14 @@ const SearchPage = () => {
           return;
         }
         return setCompanies(res.companies);
+      }
+
+      if (filterName.length < 3) {
+        notification.open({
+          message: "⚠️ Erreur",
+          description: "Le nom doit contenir au moins 3 caractères",
+        });
+        return;
       }
 
       const res = await apiController.searchCompanies(
@@ -109,6 +118,7 @@ const SearchPage = () => {
         setfilters={setfilters}
         setAfficherMenu={setAfficherMenu}
         afficherMenu={afficherMenu}
+        marginBlock={marginBlock}
       />
       <div
         style={{
