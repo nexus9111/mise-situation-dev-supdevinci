@@ -27,6 +27,7 @@ exports.isPasswordValid = (password) => {
 
 const getConnectedUser = async (req) => {
     let token = req.headers.authorization;
+
     let decoded;
     if (!token) {
         responseUtils.errorResponse(req, errors.errors.UNAUTHORIZED, "missing token");

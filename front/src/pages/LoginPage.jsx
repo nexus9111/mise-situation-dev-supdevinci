@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { Button, Checkbox, Form, Input, Col, Row } from "antd";
 import authController from "../services/auth";
 import HeaderComponent from "../components/Header";
+import { Link } from "react-router-dom";
 
 const LOGIN_REDIRECT = "/";
 
@@ -33,7 +34,7 @@ const LoginPages = ({ setToken }) => {
 
   return (
     <>
-      <HeaderComponent/>
+      <HeaderComponent />
       <Row justify={"center"}>
         <Col span={10}>
           <Form
@@ -80,11 +81,20 @@ const LoginPages = ({ setToken }) => {
             >
               <Checkbox> Remember me </Checkbox>
             </Form.Item>
-            <Form.Item wrapperCol={{ offset: 6, span: 16 }}>
+            <Form.Item style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}>
               <Button type="primary" htmlType="submit">
                 Submit
               </Button>
             </Form.Item>
+              <Link to="/register" style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}>Je n'ai pas de compte et je veux en créer un</Link>
           </Form>
         </Col>
       </Row>

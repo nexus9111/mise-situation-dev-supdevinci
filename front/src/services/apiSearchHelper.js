@@ -260,7 +260,6 @@ const getActivitySectionValue = (activitySectionCode) => {
 }
 
 const searchCompanies = async (queryString, postalCode, department, principalActivitySection, page, limit) => {
-	console.log(queryString);
 	if (!queryString && !postalCode && !department && !principalActivitySection) {
 		return {};
 	}
@@ -292,7 +291,6 @@ const searchCompanies = async (queryString, postalCode, department, principalAct
     	urlSuffix += `per_page=${limit}`;
 	}
 
-	console.log(`${SEARCH_URL}${urlSuffix}`);
     const response = await fetch(`${SEARCH_URL}${urlSuffix}`, {
         method: 'GET',
         headers: {
@@ -300,7 +298,6 @@ const searchCompanies = async (queryString, postalCode, department, principalAct
         }
     });
     const data = await response.json();
-	console.log(data.data.companies[0].owners);
     // verify status code
     if (data.success) {
         return data.data;

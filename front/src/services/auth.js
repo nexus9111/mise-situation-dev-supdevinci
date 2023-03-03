@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
-const USE_MOCK = true;
+const USE_MOCK = false;
 
 const URL = 'http://localhost:3001';
 const REGISTER_URL = `${URL}/users/register`;
@@ -42,11 +42,10 @@ const saveToken = (userToken) => {
 const getToken = () => {
     const tokenString = sessionStorage.getItem('token');
     const userToken = JSON.parse(tokenString);
-    return userToken?.token
+    return userToken
 }
 
 const logout = () => {
-    console.log("Je suis une petite pute")
     sessionStorage.removeItem('token');
 }
 
@@ -71,7 +70,7 @@ const login = async (email, password) => {
     });
     const data = await response.json();
     // verify status code
-    if (data.data.success) {
+    if (data.success) {
         // set token in session
         let token = data.data.token;
         saveToken(token);
@@ -81,7 +80,7 @@ const login = async (email, password) => {
 }
 
 
-const register = async (email, password, username) => {
+const register = async (email, username, password) => {
     // mock token
     if (USE_MOCK) {
         const token = uuidv4();
@@ -96,14 +95,14 @@ const register = async (email, password, username) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            email,
-            password,
-            username
+            "email": email,
+            "password": password,
+            "username": username
         })
     });
     const data = await response.json();
     // verify status code
-    if (data.data.success) {
+    if (data.success) {
         // set token in session
         let token = data.data.token;
         saveToken(token);
@@ -120,20 +119,19 @@ const profile = async () => {
     if (USE_MOCK) {
         return mockedProfileResults;
     }
-
     const response = await fetch(PROFILE_URL, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': getToken()
+            'authorization': getToken()
         }
     });
     const data = await response.json();
     // verify status code
-    if (data.data.success) {
-        return data.data;
+    if (data.success) {
+        return data;
     }
-    throw new Error(data.data.message);
+    throw new Error(data.message);
 }
 
 // export setToken;

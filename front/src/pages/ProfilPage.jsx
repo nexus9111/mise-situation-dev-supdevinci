@@ -8,7 +8,6 @@ import authController from "../services/auth";
 
 import HeaderComponent from "../components/Header";
 
-
 const { Title } = Typography;
 
 const ProfilPage = () => {
@@ -33,9 +32,7 @@ const ProfilPage = () => {
     <>
       <HeaderComponent />
       <div>
-        <h1 style={{ width: "100%", fontSize: 55, textAlign: "center" }}>
-          <Title>Votre profil :</Title>
-        </h1>
+          <Title style={{ width: "100%", fontSize: 55, textAlign: "center" }}>Votre profil :</Title>
       </div>
       {profil && (
         <Space
@@ -88,8 +85,6 @@ const ProfilPage = () => {
           >
             <div
               style={{
-                border: "10px double #1677FF",
-                borderRadius: 35,
                 maxWidth: "600px",
                 padding: "10px",
                 margin: "auto",

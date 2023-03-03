@@ -35,7 +35,7 @@ const CardComponent = ({ company }) => {
           <Tooltip placement="top" title={"Commentaire anciens employés"}>
             <CommentOutlined key="edit" />
           </Tooltip>,
-          <Tooltip placement="top" title={"Ecrir un commentaire"}>
+          <Tooltip placement="top" title={"Ecrir un commentaire"} disabled>
             <EditOutlined key="ellipsis" />
           </Tooltip>,
           <Tooltip placement="top" title={"Go to Indeed page"}>

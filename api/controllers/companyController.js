@@ -43,7 +43,6 @@ const generateCompanyIdentifier = (siren, name) => {
 
 const getCompanyNameFromIdentifier = (companyIdentifier) => {
     const splittedIdentifier = companyIdentifier.split("_");
-    console.log(splittedIdentifier);
     if (splittedIdentifier.length < 2) {
         return null;
     }

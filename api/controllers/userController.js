@@ -14,7 +14,6 @@ const SALT_ROUNDS = 10;
 exports.register = async (req, res, next) => {
     try {
         const { email, password, username } = req.body;
-
         if (!email || !password || !username) {
             responseUtils.errorResponse(req, errors.errors.FORBIDDEN, "Missing data");
         }

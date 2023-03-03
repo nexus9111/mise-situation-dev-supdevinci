@@ -19,6 +19,14 @@ const HeaderComponent = () => {
 
   const navList = [
     {
+      key: "Acceuil",
+      label: "Acceuil",
+      style: { fontSize: 15, textAlign: "center" },
+      onClick: () => {
+        navigate("/");
+      },
+    },
+    {
       key: "Recherche",
       label: "Recherche",
       style: { fontSize: 15, textAlign: "center", marginRight: "80%" },
