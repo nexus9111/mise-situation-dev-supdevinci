@@ -2,7 +2,9 @@ import { Icon } from "leaflet";
 import { v4 as uuidv4 } from 'uuid';
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
+import "../styles/searchPage.css";
 import "leaflet/dist/leaflet.css";
+
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 
 const mapComponent = ({ points }) => {
@@ -12,6 +14,7 @@ const mapComponent = ({ points }) => {
         center = {[48, 2]}
         zoom={5}
         scrollWheelZoom={false}
+        className="map"
         style={{ height: "97vh", width: "100%", zIndex: 1 }}
       >
         <TileLayer
